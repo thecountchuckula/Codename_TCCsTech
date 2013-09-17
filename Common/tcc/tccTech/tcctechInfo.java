@@ -21,7 +21,7 @@ public class tcctechInfo {
 		
 	public static final String NAME = "Mow The Lawn UHC Add-On";
 	public static final String MOD_ID = "mtluhc";
-	public static final String version = "v1.1-1.6.2";
+	public static final String version = "v1.3-1.6.2";
 	public static final ItemStack beef = new ItemStack(Item.beefRaw, 2, 0);
 	public static final ItemStack bonemeal = new ItemStack(Item.dyePowder, 1, 15);
 	public static final ItemStack fireball = new ItemStack(Item.fireballCharge, 1, 0);
