@@ -18,10 +18,11 @@ public class tcctechInfo {
 	public static Block leatherBlock;
 	public static Item diamondIngot;
 	public static Item denseIronIngot;
+	public static Item bedrockWallPlacer;
 		
 	public static final String NAME = "Mow The Lawn UHC Add-On";
 	public static final String MOD_ID = "mtluhc";
-	public static final String version = "v1.3-1.6.2";
+	public static final String version = "v1.4-1.6.2";
 	public static final ItemStack beef = new ItemStack(Item.beefRaw, 2, 0);
 	public static final ItemStack bonemeal = new ItemStack(Item.dyePowder, 1, 15);
 	public static final ItemStack fireball = new ItemStack(Item.fireballCharge, 1, 0);
@@ -48,7 +49,8 @@ public class tcctechInfo {
 
 	public static void itemInit(){
 			denseIronIngot = new ItemDenseIronIngot(tcctechMain.denseIronIngotID);
-			diamondIngot = new ItemDiamondIngot(tcctechMain.diamondIngotID);		
+			diamondIngot = new ItemDiamondIngot(tcctechMain.diamondIngotID);
+			bedrockWallPlacer = new ItemBedrockWallPlacer(tcctechMain.bedrockWallPlacerID);
 	}
 	public static void blockInit() {
 		leatherBlock = new BlockLeatherBlock(tcctechMain.leatherBlockID, Material.cloth);
@@ -180,6 +182,7 @@ public class tcctechInfo {
 			LanguageRegistry.addName(denseIronIngot, "Dense Iron Ingot");
 			LanguageRegistry.addName(diamondIngot, "Diamond Ingot");
 			LanguageRegistry.addName(leatherBlock, "Block of Leather");
+			LanguageRegistry.addName(bedrockWallPlacer, "Bedrock Wall Placer");
 		}
 	}
 	

@@ -22,6 +22,9 @@ public class tcctechMain {
 	static int denseIronIngotID;
 	static int diamondIngotID;
 	static int leatherBlockID;
+	static int bedrockWallPlacerID;
+	static int bedrockWallSize;
+	static int bedrockhalf;
 	static boolean hardground;
 	static boolean hardarmor;
 	static boolean mowlawn;
@@ -37,10 +40,11 @@ public class tcctechMain {
 		hardground = config.get(Configuration.CATEGORY_GENERAL, "Ground Harder to Dig", false).getBoolean(false);
 		hardarmor = config.get(Configuration.CATEGORY_GENERAL, "Harder Armor Recipes", true).getBoolean(true);
 		mowlawn = config.get(Configuration.CATEGORY_GENERAL, "Mow the Lawn", true).getBoolean(true);
+		bedrockWallPlacerID = config.get(Configuration.CATEGORY_ITEM, "Bedrock Wall Placer", 4302).getInt();
+		bedrockWallSize = config.get(Configuration.CATEGORY_GENERAL, "Bedrock Wall Size (1000 sets the wall to +/- 500 in each direction from where you use the placer.)", 400).getInt();
 		
 		config.save();
-
-		
+		bedrockhalf = bedrockWallSize/2;
 		// Strip mining made very difficult. Caves are better, but still harder.
 		
 		if(hardground == true) {
