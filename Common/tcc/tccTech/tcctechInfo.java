@@ -19,10 +19,11 @@ public class tcctechInfo {
 	public static Item diamondIngot;
 	public static Item denseIronIngot;
 	public static Item bedrockWallPlacer;
+	public static Item rock;
 		
 	public static final String NAME = "Mow The Lawn UHC Add-On";
 	public static final String MOD_ID = "mtluhc";
-	public static final String version = "v1.4-1.6.2";
+	public static final String version = "v1.5-1.6.4";
 	public static final ItemStack beef = new ItemStack(Item.beefRaw, 2, 0);
 	public static final ItemStack bonemeal = new ItemStack(Item.dyePowder, 1, 15);
 	public static final ItemStack fireball = new ItemStack(Item.fireballCharge, 1, 0);
@@ -44,6 +45,8 @@ public class tcctechInfo {
 	public static final ItemStack plateDiamond = new ItemStack(Item.plateDiamond, 1, 1);
 	public static final ItemStack legsDiamond = new ItemStack(Item.legsDiamond, 1, 1);
 	public static final ItemStack bootsDiamond = new ItemStack(Item.bootsDiamond, 1, 1);
+	public static final ItemStack stick = new ItemStack(Item.stick, 1, 0);
+	public static final ItemStack cobble = new ItemStack(Block.cobblestone, 1, 0);
 	
 
 
@@ -51,6 +54,8 @@ public class tcctechInfo {
 			denseIronIngot = new ItemDenseIronIngot(tcctechMain.denseIronIngotID);
 			diamondIngot = new ItemDiamondIngot(tcctechMain.diamondIngotID);
 			bedrockWallPlacer = new ItemBedrockWallPlacer(tcctechMain.bedrockWallPlacerID);
+			rock = new ItemRock(tcctechMain.rockID);
+			
 	}
 	public static void blockInit() {
 		leatherBlock = new BlockLeatherBlock(tcctechMain.leatherBlockID, Material.cloth);
@@ -59,7 +64,7 @@ public class tcctechInfo {
 	}
 	
 	public static void craftingR() {
-		if(tcctechMain.hardarmor == true) {
+		if((tcctechMain.hardarmor == true) && (tcctechMain.hardarmor != false)) {
 			tcctechInfo.RemoveRecipe(new ItemStack(Item.helmetLeather, 1, 0));
 			tcctechInfo.RemoveRecipe(new ItemStack(Item.plateLeather, 1, 0));
 			tcctechInfo.RemoveRecipe(new ItemStack(Item.legsLeather, 1, 0));
@@ -76,7 +81,7 @@ public class tcctechInfo {
 	}
 	
 	public static void crafting() {
-		if(tcctechMain.hardarmor == true) {
+		if((tcctechMain.hardarmor == true) && (tcctechMain.hardarmor != false)) {
 			//Hard Armor Recipes
 			//Leather
 			GameRegistry.addRecipe(new ItemStack(Item.helmetLeather, 1, 0),
@@ -144,7 +149,12 @@ public class tcctechInfo {
 					'd', Item.diamond);
 		}
 		GameRegistry.addSmelting(Item.eyeOfEnder.itemID, fireball, 0.8F);
-		GameRegistry.addShapelessRecipe(beef, Item.redstone, Item.rottenFlesh, Item.sugar, bonemeal);
+		GameRegistry.addShapelessRecipe(new ItemStack(rock, 9, 0), cobble);
+		GameRegistry.addRecipe(cobble,
+				"rrr",
+				"rrr",
+				"rrr",
+				'r', rock);
 		GameRegistry.addRecipe(torches,
 				"c",
 				"p",
@@ -161,28 +171,24 @@ public class tcctechInfo {
         		"lll",
         		'l', Item.leather);
 
-		if(tcctechMain.mowlawn == true) {
-			MinecraftForge.addGrassSeed(new ItemStack(Item.potato), 10);
-			MinecraftForge.addGrassSeed(new ItemStack(Item.rottenFlesh), 10);
-			MinecraftForge.addGrassSeed(new ItemStack(Item.carrot), 10);
-			MinecraftForge.addGrassSeed(new ItemStack(Item.pumpkinSeeds), 7);
-			MinecraftForge.addGrassSeed(new ItemStack(Item.melonSeeds), 6);
-			MinecraftForge.addGrassSeed(new ItemStack(Item.coal), 6);
-			MinecraftForge.addGrassSeed(new ItemStack(Item.appleRed), 5);
-			MinecraftForge.addGrassSeed(new ItemStack(Item.ingotIron), 4);
-			MinecraftForge.addGrassSeed(new ItemStack(Item.goldNugget), 3);
-			MinecraftForge.addGrassSeed(new ItemStack(Item.diamond), 1);
-			MinecraftForge.addGrassSeed(new ItemStack(Block.obsidian), 1);
+		if((tcctechMain.mowlawn == true) && (tcctechMain.mowlawn != false)) {
+			MinecraftForge.addGrassSeed(stick, 20);
+			MinecraftForge.addGrassSeed(new ItemStack(rock, 1, 0), 25);
+			MinecraftForge.addGrassSeed(new ItemStack(Item.potato), 5);
+			MinecraftForge.addGrassSeed(new ItemStack(Item.rottenFlesh), 5);
+			MinecraftForge.addGrassSeed(new ItemStack(Item.carrot), 5);
+			MinecraftForge.addGrassSeed(new ItemStack(Item.appleRed), 2);
 			MinecraftForge.addGrassSeed(new ItemStack(Item.dyePowder, 1, 15), 1);
 		}
 	}
 	
 	public static void names() {
-		if(tcctechMain.hardarmor == true) {
+		if((tcctechMain.hardarmor == true) && (tcctechMain.hardarmor != false)) {
 			LanguageRegistry.addName(denseIronIngot, "Dense Iron Ingot");
 			LanguageRegistry.addName(diamondIngot, "Diamond Ingot");
 			LanguageRegistry.addName(leatherBlock, "Block of Leather");
 			LanguageRegistry.addName(bedrockWallPlacer, "Bedrock Wall Placer");
+			LanguageRegistry.addName(rock, "Rock");
 		}
 	}
 	
