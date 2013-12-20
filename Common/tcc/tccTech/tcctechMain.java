@@ -25,6 +25,8 @@ public class tcctechMain {
 	static int bedrockWallSize;
 	static int bedrockhalf;
 	static int rockID;
+	static int torchlevel;
+	static float torchlight;
 	static boolean hardground;
 	static boolean hardarmor;
 	static boolean mowlawn;
@@ -44,7 +46,8 @@ public class tcctechMain {
 		hardarmor = config.get(Configuration.CATEGORY_GENERAL, "Harder Armor Recipes", true).getBoolean(true);
 		mowlawn = config.get(Configuration.CATEGORY_GENERAL, "Mow the Lawn", true).getBoolean(true);
 		bedrockWallSize = config.get(Configuration.CATEGORY_GENERAL, "Bedrock Wall Size (1000 sets the wall to +/- 500 in each direction from where you use the placer.)", 400).getInt();
-		
+		torchlevel = config.get(Configuration.CATEGORY_GENERAL, "Light Level for Torches (1-10)", 5).getInt();
+		torchlight = torchlevel/10F;
 		config.save();
 		bedrockhalf = bedrockWallSize/2;
 		// Strip mining made very difficult. Caves are better, but still harder.
@@ -69,7 +72,7 @@ public class tcctechMain {
 		Block.blocksList[Block.slowSand.blockID].setHardness(10F);
 		}
 		// Dimmer Torches, Harder to Break.
-		Block.blocksList[Block.torchWood.blockID].setLightValue(0.5F).setHardness(.5F);
+		Block.blocksList[Block.torchWood.blockID].setLightValue(torchlight).setHardness(.5F);
 		// Stack the Important Stuff.
 		Item.itemsList[Item.potion.itemID].setMaxStackSize(3);
 		// Can carry fewer arrows.
